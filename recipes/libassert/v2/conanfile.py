@@ -51,7 +51,11 @@ class LibassertConan(ConanFile):
         cmake_layout(self, src_folder="src")
 
     def requirements(self):
-        if Version(self.version) >= "2.1.2":
+        if Version(self.version) >= "2.2.0":
+            self.requires("cpptrace/1.0.1", transitive_headers=True, transitive_libs=True)
+        elif Version(self.version) >= "2.1.5":
+            self.requires("cpptrace/0.8.2", transitive_headers=True, transitive_libs=True)
+        elif Version(self.version) >= "2.1.2":
             self.requires("cpptrace/0.7.2", transitive_headers=True, transitive_libs=True)
         else:
             self.requires("cpptrace/0.7.1", transitive_headers=True, transitive_libs=True)
